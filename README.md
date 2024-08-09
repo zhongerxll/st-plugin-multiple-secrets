@@ -4,7 +4,9 @@
 
 # 看不懂的，嫌麻烦的，用喵喵脚本的人直接看这个傻瓜式命令，全自动安装
 
-用喵喵脚本的，记得先输入0退出脚本，再输入命令，这个命令会自动寻找酒馆安装路径进行安装，包括服务端插件和客户端扩展，客户端扩展将为现有全部用户进行安装，一行搞定，主打傻瓜式
+用喵喵脚本的，记得先输入0退出脚本，然后输入点一下ctrl再点一下d退出proot环境，因为会影响效率
+
+最后再输入命令，这个命令会自动寻找酒馆安装路径进行安装，包括服务端插件和客户端扩展，客户端扩展将为现有全部用户进行安装，一行搞定，主打傻瓜式
 ```bash
 cd $(find $PREFIX/.. -type d -name "SillyTavern" -exec bash -c 'git -C {} remote get-url origin | grep -q SillyTavern/SillyTavern && echo {}' \; 2>/dev/null) && sed -i 's@^.*enableServerPlugins.*$@enableServerPlugins: true@' ./config.yaml && cd ./plugins/ && rm -rf ./st-plugin-multiple-secrets && git clone https://github.com/zhongerxll/st-plugin-multiple-secrets && cd .. && find ./data/ -maxdepth 1 -mindepth 1 -type d ! -name '_uploads' ! -name '_storage' -exec bash -c "cd {}/extensions/ && rm -rf st-extension-multiple-secrets && git clone https://github.com/zhongerxll/st-extension-multiple-secrets" \;
 ```
