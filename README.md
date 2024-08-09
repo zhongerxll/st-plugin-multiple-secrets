@@ -6,7 +6,7 @@
 
 首先在终端进入SillyTavern主目录并键入以下命令修改配置使SillyTavern启用服务器插件，或者自己用文本编辑器在config.yaml将enableServerPlugins的值修改为true
 ```bash
-sed -i 's@enableServerPlugins@enableServerPlugins: true@' ./config.yaml
+sed -i 's@^.*enableServerPlugins.*$@enableServerPlugins: true@' ./config.yaml
 ```
 
 然后还是在终端进入SillyTavern主目录并键入以下命令开始下载安装插件，需要重启SillyTavern
