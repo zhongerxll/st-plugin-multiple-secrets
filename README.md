@@ -13,7 +13,7 @@
 cd $(find $PREFIX/.. -type d -name "SillyTavern" -exec bash -c 'git -C {} remote get-url origin | grep -q SillyTavern/SillyTavern && echo {}' \; 2>/dev/null) && sed -i 's@^.*enableServerPlugins.*$@enableServerPlugins: true@' ./config.yaml && cd ./plugins/ && rm -rf ./st-plugin-multiple-secrets && git clone https://github.com/zhongerxll/st-plugin-multiple-secrets && cd .. && find ./data/ -maxdepth 1 -mindepth 1 -type d ! -name '_uploads' ! -name '_storage' -exec bash -c "cd {}/extensions/ && rm -rf st-extension-multiple-secrets && git clone https://github.com/zhongerxll/st-extension-multiple-secrets" \;
 ```
 
-# 安装方法
+# 正常安装方法
 
 首先在终端进入SillyTavern主目录并键入以下命令修改配置使SillyTavern启用服务器插件，或者自己用文本编辑器在config.yaml将enableServerPlugins的值修改为true
 ```bash
