@@ -1,14 +1,14 @@
-const path = require('path');
-const fs = require('fs');
-const writeFileAtomicSync = require('write-file-atomic').sync;
-const { jsonParser } = require('../../src/express-common');
+import path from 'path';
+import fs from 'fs';
+import { sync as writeFileAtomicSync } from 'write-file-atomic';
+import { jsonParser } from '../../src/express-common.js'; // 确保文件路径正确
 const SECRETS_FILE = 'secrets.json';
 
 /**
  * Initialize the plugin.
  * @param {import('express').Router} router
  */
-async function init(router) {
+export async function init(router) {
     router.post('/switch', jsonParser, (req, res) => {
         const key = req.body.key;
 
@@ -39,18 +39,12 @@ async function init(router) {
     console.log('Multiple Secrets Plugin Initialized');
 }
 
-async function exit() {
+export async function exit() {
     // Nothing to do here
 }
 
-const info = {
+export const info = {
     id: 'multiple-secrets',
     name: 'Multiple Secrets',
     description: 'Switch secret keys when using multiple API keys simultaneously',
 };
-
-module.exports = {
-    init,
-    exit,
-    info,
-}
